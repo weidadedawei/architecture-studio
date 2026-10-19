@@ -1,0 +1,2 @@
+const fs=require('node:fs/promises'),path=require('node:path'),sharp=require('sharp');
+(async()=>{const folder=path.resolve(__dirname,'../images');for(const file of await fs.readdir(folder)){if(!file.endsWith('.svg'))continue;await sharp(path.join(folder,file),{density:144}).flatten({background:'#ffffff'}).png().toFile(path.join(folder,file.replace(/\.svg$/,'.png')));console.log('RENDER',file);}})().catch(e=>{console.error(e);process.exitCode=1;});

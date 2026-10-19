@@ -1,0 +1,78 @@
+name: Test and deploy GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    permissions:
+      contents: read
+      pages: read
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Check published project and bilingual diagrams
+        run: python3 tests/static_check.py --report reports/static-check-report.json
+      - name: Run checker regression tests
+        run: python3 -m unittest discover -s tests -p 'test_*.py' -v
+      - name: Build standalone static website
+        run: python3 scripts/prepare_web.py
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Upload website
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: web-dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Publish GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Verify public resources and deployed source commit
+        env:
+          PAGES_URL: ${{ steps.deployment.outputs.page_url }}
+        shell: bash
+        run: |
+          for attempt in 1 2 3 4; do
+            if python3 tests/http_smoke.py --base-url "$PAGES_URL" --expected-commit "$GITHUB_SHA" --report reports/github-pages-http-smoke.json; then
+              exit 0
+            fi
+            if [ "$attempt" -eq 4 ]; then
+              exit 1
+            fi
+            sleep 10
+          done
+      - name: Save online verification report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: github-pages-http-verification
+          path: reports/github-pages-http-smoke.json
+          if-no-files-found: warn
+          retention-days: 14

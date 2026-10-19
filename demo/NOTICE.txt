@@ -1,0 +1,5 @@
+Device Demo Architecture Studio
+
+This public teaching example contains fictional data and generic icons only.
+Icons: Lucide, https://github.com/lucide-icons/lucide, ISC license.
+See licenses/lucide-LICENSE for the full copyright and permission notice.

@@ -1,0 +1,79 @@
+{
+  "schema": 1,
+  "kind": "static-artifact-checks",
+  "passed": 13,
+  "failed": 0,
+  "total": 13,
+  "checks": [
+    {
+      "id": "required_files",
+      "status": "PASS",
+      "detail": "15 required artifacts exist and are nonempty"
+    },
+    {
+      "id": "embedded_project",
+      "status": "PASS",
+      "detail": "HTML embedded project exactly matches the downloadable JSON"
+    },
+    {
+      "id": "project_structure",
+      "status": "PASS",
+      "detail": "All projects have schema 2, two diagrams, a valid active view and locale"
+    },
+    {
+      "id": "bilingual_text",
+      "status": "PASS",
+      "detail": "723 paired translation keys have matching keys and value types"
+    },
+    {
+      "id": "unique_ids",
+      "status": "PASS",
+      "detail": "321 IDs are unique within each diagram scope"
+    },
+    {
+      "id": "endpoints",
+      "status": "PASS",
+      "detail": "120 edge endpoint pairs and optional port settings are valid"
+    },
+    {
+      "id": "geometry",
+      "status": "PASS",
+      "detail": "159 rectangles plus annotation and waypoint coordinates fit their canvases"
+    },
+    {
+      "id": "inline_icons",
+      "status": "PASS",
+      "detail": "20 icons are embedded; all diagram icon references resolve"
+    },
+    {
+      "id": "offline_html",
+      "status": "PASS",
+      "detail": "HTML resources and icons are inline; no remote CSS or network API calls detected"
+    },
+    {
+      "id": "svg_exports",
+      "status": "PASS",
+      "detail": "All four SVG documents parse and contain no external href resources"
+    },
+    {
+      "id": "drawio_exports",
+      "status": "PASS",
+      "detail": "Four editable Draw.io documents parse; 80 edge endpoint pairs resolve"
+    },
+    {
+      "id": "png_exports",
+      "status": "PASS",
+      "detail": "system-zh-CN.png=3880x2350; system-en.png=3880x2350; network-zh-CN.png=3840x2480; network-en.png=3840x2480"
+    },
+    {
+      "id": "redaction_scan",
+      "status": "PASS",
+      "detail": "23 publishable text artifacts passed the documented pattern list (not a general secret-scan guarantee)"
+    }
+  ],
+  "limits": [
+    "No JavaScript execution or browser interaction",
+    "No production, network, security-compliance or performance verification",
+    "Redaction is limited to the documented patterns"
+  ]
+}

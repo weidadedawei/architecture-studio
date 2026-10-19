@@ -1,0 +1,16 @@
+{
+  "name": "offline-architecture-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Fictional bilingual architecture diagrams with reproducible checks",
+  "scripts": {
+    "test": "node tests/interaction_check.cjs",
+    "render": "node tests/render-previews.cjs",
+    "check:syntax": "node --check demo/source/app.js"
+  },
+  "devDependencies": {
+    "@napi-rs/canvas": "0.1.100",
+    "jsdom": "26.1.0",
+    "sharp": "0.35.5"
+  }
+}

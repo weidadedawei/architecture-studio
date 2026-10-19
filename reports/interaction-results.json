@@ -1,0 +1,21 @@
+{
+  "checks": [
+    "both diagrams initialize without runtime errors",
+    "four bilingual renderings: no Chinese in English, no card overflow, orthogonal edges, SVG/PNG and editable Draw.io valid",
+    "language drafts never overwrite shared geometry or the other translation",
+    "switching diagrams retains independent models and unapplied text drafts",
+    "connection labels, endpoint fractions, and routing edit correctly in both languages",
+    "network zone and annotation text are editable",
+    "add/delete cascades and undo/redo restore components and their connections",
+    "dragging a node moves its owned annotations; undo restores positions",
+    "a group move that would push waypoints outside the canvas is rejected without saving invalid data",
+    "seven malformed imports fail atomically and preserve the current inspector draft",
+    "JSON export/import round trip and both runnable examples preserve both diagrams and languages",
+    "saved HTML embeds both edited diagrams and uses an independent storage namespace",
+    "browser storage reload retains bilingual edits",
+    "opaque/file-origin storage failure still permits editing and JSON/HTML backup",
+    "PNG export produces a real high-resolution PNG through offline native rasterization"
+  ],
+  "passed": 15,
+  "verification": "Offline DOM and native SVG rasterization; no browser UI automation or network requests."
+}
