@@ -7,7 +7,7 @@
 - 教程：[操作与实现说明](https://weidadedawei.github.io/architecture-studio/guide.html)
 - 附件：[源码、实例与测试脚本](https://weidadedawei.github.io/architecture-studio/downloads/Architecture_Studio_CSDN.zip)
 
-以上为本项目的发布地址。本文编写时已配置 Pages 工作流，首次部署及公开链接验收仍待执行；请以对应提交的 Actions 结果为准。
+首次发布已由 [GitHub Actions 完成构建、部署与在线检查](https://github.com/weidadedawei/architecture-studio/actions/runs/39214296614)。后续每次更新请以对应提交的 Actions 结果为准。
 
 ## 1. 创建自己的在线演示
 

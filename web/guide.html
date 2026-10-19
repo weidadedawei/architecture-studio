@@ -241,7 +241,7 @@ print(&quot;Generated:&quot;, output.name)
 self.save_project()
 self.assert_rejected(&quot;endpoints&quot;)
 </code></pre>
-<p>本次结果为 <strong>13 项测试通过</strong>。这里的“测试通过”包含正确拒绝错误输入，并不是说这些错误文件可以正常使用。</p>
+<p>本次结构检查器的 <strong>13 项测试通过</strong>；GitHub Pages 发布额外加入3项提交标识回归，当前 Python 测试合计 <strong>16 项通过</strong>。这里的“测试通过”包含正确拒绝错误输入，并不是说这些错误文件可以正常使用。</p>
 <h2>9. 离线功能测试与浏览器操作验收</h2>
 <p>静态检查不会点击按钮。为了验证双语编辑、切图、撤销和导入恢复，附件另有基于 jsdom 的离线 DOM 测试，并使用原生图像库检查导出路径。</p>
 <p>仅在运行开发测试时需要安装这些依赖：</p>
